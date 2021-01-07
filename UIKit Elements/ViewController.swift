@@ -8,6 +8,13 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
+    
+    var count = 0 {
+        didSet {
+            updateButton()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -23,6 +30,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var horseImageView: UIImageView!
     @IBOutlet weak var poemTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var button: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +54,51 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.backgroundColor = .cyan
         tableView.dataSource = self
         
+        // UIButton
+        
+    }
+    
+    func updateButton() {
+        button.setTitle("Count: \(count)", for: [])
+        
+    }
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+       count += 1
+   
+    }
+    
+    @IBAction func segmentSelected(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            count = 0
+        case 1:
+            count -= 1
+        case 2:
+            count += 1
+        default:
+            break
+        }
+    }
+    
+    @IBAction func dataEntered(_ sender: UITextField) {
+        print(#line, #function, sender.text ?? "nil", sender.tag)
+    }
+    
+    @IBAction func sliderValueChange(_ sender: UISlider) {
+        sender.value = Float(25 * Int(sender.value / 25))
+        print(#line, #function, sender.value)
+    }
+    @IBAction func switchPressed(_ sender: UISwitch) {
+        view.backgroundColor = sender.isOn ? .white : .cyan
+    }
+    
+    @IBAction func dataPicked(_ sender: UIDatePicker) {
+        print(#line, #function, sender.date)
     }
     
 }
+    
+    
+
+
