@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             poemTextView.text = String(text.reversed())
         }
         
-        // UIScrollView
+        // UIScrollView 07/01/2021
         let imageView = UIImageView(image: UIImage(named: "horse"))
         let scrollView = UIScrollView(frame: CGRect(x: view.bounds.midX - 50 , y: 100, width: 100, height: 100))
         scrollView.backgroundColor = .black
